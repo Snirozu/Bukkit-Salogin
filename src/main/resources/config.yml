@@ -1,0 +1,67 @@
+# The language of messages that will be sent to player
+# for example "en" will take plugins/Salogin/messages/en.yml
+language: en
+
+# WARNING!!! Only use this when database is empty!
+# Hashes: bcrypt, argon2
+hashing-algorithm: bcrypt
+
+# Minimum amount of chars that should be in a password 
+min-chars-in-password: 5
+
+# The limit of players that can be on the server with the same ip
+player-per-ip-limit: 1
+
+# How many times login notification should be sent
+# Set -1 for no kick when logging in
+login-notify-period: 6
+# Delay between each login notification
+login-notify-delay: 5
+
+# Tries unit the player gets banned using 
+login-ban-tries: 5
+# A command that gets called after someone 
+login-ban-command: 5
+
+# When player joins this will be temporary location for player before logging in, after logging in the player will be sent to their previous location
+# The values can be either essentialsSpawn, salogin (define by /saloginadmin setloginspawn) or null (for none)
+# WARNING: this setting should be only changed when this plugin/server isn't running
+join-player-location: null
+
+# Spawn location for join-player-location if it is set as salogin
+# set it in-game with /saloginadmin setloginspawn
+spawn-location:
+  world: null
+  x: 0.0
+  y: 0.0
+  z: 0.0
+  yaw: 0.0
+  pitch: 0.0
+
+database:
+  #Type should be: sqlite, mysql 
+  type: sqlite
+
+  # Ignore if you're using SQLite
+  host: localhost
+  port: 27017
+  name: SaLoginDB
+  user: root
+  password: admin
+
+#Email and Gmail are supported
+email:
+  #Whatever or not /setemail and /forgotpassword should work
+  enabled: false
+
+  # The name displayed on email
+  name: MCServer
+  # The address of your email, for ex. example@example.com
+  from: ""
+  host: "smtp.gmail.com"
+  port: 587
+  # If you're using gmail this should the same as your email address
+  user: ""
+  # DO NOT SHOW ANYONE YOUR PASSWORD
+  # for gmail turn on two step verification and get password from: https://myaccount.google.com/apppasswords
+  password: "" 

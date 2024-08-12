@@ -1,0 +1,73 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+}
+
+group 'snirozu.salogin'
+version '1.0.0'
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java']
+        }
+        resources {
+            srcDirs = ['src/main/resources']
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+
+    maven {
+        url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+
+        content {
+            includeGroup 'org.bukkit'
+            includeGroup 'org.spigotmc'
+        }
+    }
+    maven {
+        name "essentialsx-releases"
+        url "https://repo.essentialsx.net/releases/"
+    }
+}
+
+dependencies {
+    compileOnly 'org.spigotmc:spigot-api:1.19.2-R0.1-SNAPSHOT'
+    // Use JUnit Jupiter for testing.
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.7.2'
+
+    // This dependency is used by the application.
+    implementation 'com.google.guava:guava:30.1.1-jre'
+    // https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver
+    //implementation group: 'org.mongodb', name: 'mongo-java-driver', version: '3.12.11'
+
+    implementation 'com.password4j:password4j:1.6.3'
+
+    implementation 'org.apache.logging.log4j:log4j-api:2.19.0'
+    implementation 'org.apache.logging.log4j:log4j-core:2.19.0'
+
+    implementation 'org.simplejavamail:simple-java-mail:7.5.0'
+    // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
+
+    compileOnly 'net.essentialsx:EssentialsX:2.19.0'
+    compileOnly 'net.essentialsx:EssentialsXSpawn:2.19.0'
+
+    implementation 'com.google.code.gson:gson:2.10'
+}
+
+tasks.named('test') {
+    // Use JUnit Platform for unit tests.
+    useJUnitPlatform()
+}
+
+shadowJar {
+    archiveClassifier = ''
+}
+
+build {
+    finalizedBy (shadowJar)
+}

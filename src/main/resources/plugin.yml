@@ -1,0 +1,61 @@
+name: SaLogin
+description: Plugin for authentication purposes.
+version: 1.0.0
+main: snirozu.salogin.Salogin
+author: snirozu
+api-version: 1.13
+
+commands:
+  saloginadmin:
+    aliases:
+      - salus
+    permission: salogin.admin
+
+  login:
+    aliases:
+      - l
+    permission: salogin.login
+
+  register:
+    permission: salogin.register
+
+  changepassword:
+    aliases:
+      - changepass
+    permission: salogin.changepassword
+
+  forgotpassword:
+    permission: salogin.forgotpassword
+
+  logincode:
+    permission: salogin.logincode
+
+  setemail:
+    permission: salogin.setemail
+
+permissions:
+  salogin.admin:
+    default: op
+  salogin.login:
+    default: true
+  salogin.register:
+    default: true
+  salogin.changepassword:
+    default: true
+  salogin.forgotpassword:
+    default: true
+  salogin.logincode:
+    default: true
+  salogin.setemail:
+    default: true
+
+  salogin.user:
+    description: Parent permission containing player permissions
+    default: true
+    children:
+      salogin.login: true
+      salogin.register: true
+      salogin.changepassword: true
+      salogin.forgotpassword: true
+      salogin.logincode: true
+      salogin.setemail: true
